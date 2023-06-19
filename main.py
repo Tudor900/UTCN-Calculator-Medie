@@ -65,7 +65,15 @@ for line in lines:
     words = line.split(",")
     mark = words[1].strip()
     if mark == "necules":
-        print("Nu toate notele au fost trecute")
+        window = tk.Tk()
+        window.title("Note Sesiune UTCN")
+        window.geometry("300x200")
+
+        necules_label = tk.Label(window, text="Nu toate notele au fost trecute")
+        necules_label.pack()
+        window.mainloop()
+
+        #print("Nu toate notele au fost trecute")
         exit(1)
 
 
@@ -112,7 +120,12 @@ for line in lines:
 
 medie = sum / 30 # 30 is the number of credits in a semester
 
-print(f'Media este {medie}')
+window = tk.Tk()
+window.title("Note Sesiune UTCN")
+window.geometry("300x200")
+
+medie_label = tk.Label(window, text=f'Media este {medie}')
+#print(f'Media este {medie}')
 
 window.mainloop()
 

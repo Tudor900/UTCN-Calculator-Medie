@@ -1,9 +1,21 @@
 UTCN Medie Calculator
 
+
+v0.1.2 change log:
+
+-am creat un exe cu pyinstaller
+
+
+//
+
+
+
 v0.1.1 change log:
 
 -am pus browseru in alt fisier ca main.py sa fie mai usor de citit
 
+
+//
 
 
 TO DO:
