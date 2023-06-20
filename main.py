@@ -8,6 +8,7 @@ window = tk.Tk()
 window.title("Note Sesiune UTCN")
 window.geometry("500x200")
 window.resizable(False, False)
+credits_per_semester = 30
 
 # Obtain the path to the script or executable
 if getattr(sys, 'frozen', False):
@@ -163,7 +164,7 @@ def submit():
     for line in lines:
         sum += int(line.strip())
 
-    medie = sum / 30  # 30 is the number of credits in a semester
+    medie = sum / credits_per_semester
 
     medie_label = tk.Label(window, text=f'Media este {medie}')
     medie_label.pack()
