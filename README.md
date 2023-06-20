@@ -1,6 +1,14 @@
 UTCN Medie Calculator
 //
 
+v0.3.1 change log:
+
+-am adaugat icon pentru aplicatie
+
+-am adaugat imagine pentru aplicatie
+
+//
+
 v0.3 change log:
 
 -am adugat tree pentru vizualizarea materiilor

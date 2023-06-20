@@ -2,13 +2,28 @@ import sinubrowser
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
+from PIL import ImageTk, Image
 import os
 import sys
 
 window = tk.Tk()
-window.title("Note Sesiune UTCN")
-window.geometry("500x200")
+window.title("Better SINU\u2122")
+window.iconbitmap("icon.ico")
+
+# Get the screen width and height
+screen_width = window.winfo_screenwidth()
+screen_height = window.winfo_screenheight()
+
+# Calculate the center coordinates
+window_width = 500  # Set your desired window width
+window_height = 200  # Set your desired window height
+x = (screen_width // 2) - (window_width // 2) - 25
+y = (screen_height // 2) - (window_height // 2) - 50
+
+# Set the window geometry to center the window
+window.geometry(f"{window_width}x{window_height}+{x}+{y}")
 window.resizable(False, False)
+image = Image.open("background.png")
 credits_per_semester = 30
 necules = '11'
 specialNeculesCase = '5'
@@ -24,7 +39,12 @@ else:
 # Construct the path to the faculty directory
 faculty_directory = os.path.join(script_path, "facultate")
 
+# Create a PhotoImage from the resized image
+photo = ImageTk.PhotoImage(image)
 
+# Create a label and set the background image
+background_label = Label(window, image=photo)
+background_label.place(x=-150, y=-25, relwidth=1, relheight=1)
 username_label = tk.Label(window, text="Username")
 username_label.pack()
 username_entry = tk.Entry(window)
@@ -76,6 +96,7 @@ def erase():
     username_entry.destroy()
     password_label.destroy()
     password_entry.destroy()
+    background_label.destroy()
     drop_f.destroy()
     drop_s.destroy()
     submit_button.destroy()
@@ -99,7 +120,7 @@ def create_table(courses):
     for course_name, grade in courses.items():
         tree.insert('', 'end', values=(course_name, grade))
 
-    tree.pack(fill='both', expand=True)  
+    tree.pack(fill='both', expand=True)
     return tree
 
 def submit():
@@ -213,7 +234,7 @@ submit_button = tk.Button(window, text="Submit", command=submit)
 submit_button.pack()
 
 #make author label and align it to bottom
-author_label = tk.Label(window, text="Made by: Serviciul IT")
+author_label = tk.Label(window, text="Made by Serviciul IT")
 author_label.pack(side=BOTTOM)
 
 window.mainloop()
