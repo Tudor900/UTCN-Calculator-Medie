@@ -1,11 +1,11 @@
 import sinubrowser
 import tkinter as tk
-
-
+from tkinter import *
 
 window = tk.Tk()
 window.title("Note Sesiune UTCN")
-window.geometry("300x200")
+window.geometry("500x200")
+window.resizable(False, False)
 
 username_label = tk.Label(window, text="Username")
 username_label.pack()
@@ -17,25 +17,46 @@ password_label.pack()
 password_entry = tk.Entry(window, show="*")
 password_entry.pack()
 
+options = [
+    "Facultatea de Arhitectura si Urbanism",
+    "Facultatea de Automatica si Calculatoare",
+    "Facultatea de Autovehicule Rutiere, Mecatronica si Mecanica",
+    "Facultatea de Constructii",
+    "Facultatea de Electronica,Telecomunicatii si Tehnologia Informatiei",
+    "Facultatea de Ingineria Materialelor si a Mediului",
+    "Facultatea de Inginerie a Instalatiilor",
+    "Facultatea de Inginerie Electrica",
+    "Facultatea de Inginerie Industriala, Robotica si Managementul Productiei",
+]
+
+clicked = StringVar()
+
+clicked.set( "Alege Facultatea" )
+
+drop = OptionMenu( window , clicked , *options )
+
+drop.pack()
 
 def submit():
     global username
     global password
+    global faculty
     username = username_entry.get()
     password = password_entry.get()
+    faculty = clicked.get()
     window.destroy()
 
 
 submit_button = tk.Button(window, text="Submit", command=submit)
 submit_button.pack()
 
+#make author label and align it to bottom
+author_label = tk.Label(window, text="Made by: Tudor Florea")
+author_label.pack(side=BOTTOM)
+
 window.mainloop()
 
-sinubrowser.launch_selenium(username, password)
-
-
-
-
+sinubrowser.launch_selenium(username, password, faculty)
 
 with open("marks.txt", "r") as file:
     lines = file.readlines()
@@ -75,9 +96,6 @@ for line in lines:
 
         #print("Nu toate notele au fost trecute")
         exit(1)
-
-
-
 
 
 with open("marks.txt", "r") as marks_file:

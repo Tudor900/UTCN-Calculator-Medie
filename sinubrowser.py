@@ -5,15 +5,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 
-
-
-
-
 chrome_options = Options()
 chrome_options.add_argument("--headless")  # Run Chrome in headless mode
 chrome_options.add_argument("--disable-gpu")  # Disabling GPU acceleration
 
-def launch_selenium(username, password):
+def launch_selenium(username, password, faculty):
     chromedriver_autoinstaller.install()
 
     driver = webdriver.Chrome(options=chrome_options)
@@ -30,8 +26,8 @@ def launch_selenium(username, password):
     submit_button.click()
 
     # WebDriverWait(driver, 10).until(EC.url_changes("https://websinu.utcluj.ro/note/default.asp"))
-
-    link_element = driver.find_element(By.XPATH, '//a[@href="javascript: NoteSesiuneaCurenta(\'Facultatea de Electronica,Telecomunicatii si Tehnologia Informatiei\', \'Inginerie Electronica,Telecomunicatii  si Tehn.Inform.(engleza)-lic\')"]')
+    faculty_name = faculty
+    link_element = driver.find_element(By.XPATH,f'//a[contains(@href, "javascript: NoteSesiuneaCurenta(\'{faculty_name}\'")]')
     link_element.click()
 
     marks_file = open("marks.txt", "w")

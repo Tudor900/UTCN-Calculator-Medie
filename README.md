@@ -1,5 +1,15 @@
 UTCN Medie Calculator
 
+//
+
+v0.1.3 change log:
+
+-am aduagat celelate facultati
+
+-am adugat numele meu
+
+//
+
 
 v0.1.2 change log:
 
