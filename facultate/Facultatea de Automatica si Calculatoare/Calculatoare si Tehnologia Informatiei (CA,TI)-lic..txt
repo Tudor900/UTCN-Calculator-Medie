@@ -1,0 +1,18 @@
+Analiza matematica I (Calcul diferential),4
+Algebra liniara si geometrie analitica,4
+Matematici speciale,5
+Proiectare logica,5
+Programare calculatoarelor,6
+Fizica,4
+Limba engleza I,2
+Limba franceza I,2
+Limba germana I,2
+Analiza matematica II (Calcul integral si ecuatii diferentiale),5
+Programare in limbaj de asamblare,4
+Electrotehnica,5
+Proiectarea sistemelor numerice,6
+Structuri de date si algoritmi,6
+Limba engleza II,2
+Limba franceza II,2
+Limba germana II,2
+Sport I,2

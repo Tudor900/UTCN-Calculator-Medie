@@ -1,6 +1,7 @@
 import sinubrowser
 import tkinter as tk
 from tkinter import *
+from tkinter import ttk
 import os
 import sys
 
@@ -9,6 +10,8 @@ window.title("Note Sesiune UTCN")
 window.geometry("500x200")
 window.resizable(False, False)
 credits_per_semester = 30
+necules = '11'
+specialNeculesCase = '5'
 
 # Obtain the path to the script or executable
 if getattr(sys, 'frozen', False):
@@ -77,6 +80,27 @@ def erase():
     drop_s.destroy()
     submit_button.destroy()
 
+def create_table(courses):
+    frame = tk.Frame(window)
+    frame.pack()
+
+    tree = ttk.Treeview(frame, columns=('Course', 'Grade'), show='headings')
+
+    vscroll = ttk.Scrollbar(frame, orient='vertical', command=tree.yview)
+    vscroll.pack(side='right', fill='y')
+    tree.configure(yscrollcommand=vscroll.set)
+
+    tree.column('Course', anchor='center', width=300)
+    tree.column('Grade', anchor='center', width=80)
+
+    tree.heading('Course', text='Course', anchor='center')
+    tree.heading('Grade', text='Grade', anchor='center')
+
+    for course_name, grade in courses.items():
+        tree.insert('', 'end', values=(course_name, grade))
+
+    tree.pack(fill='both', expand=True)  
+    return tree
 
 def submit():
     global username
@@ -88,8 +112,6 @@ def submit():
     specialty = clicked_s.get()
     specialty = specialty.replace(".txt", "")
     erase()
-
-
 
     sinubrowser.launch_selenium(username, password, faculty, specialty)
 
@@ -106,7 +128,7 @@ def submit():
         if last_part == "Admis":
             last_part = '10'
         elif last_part == "Necules":
-            last_part = '5'
+            last_part = necules
 
         formatted_line = f'{course_name},{last_part}\n'
         formatted_lines.append(formatted_line)
@@ -146,6 +168,8 @@ def submit():
             materie_name = materie_words[0].strip()
             materie_value = materie_words[1].strip()
             if course_name == materie_name:
+                if mark == necules:
+                    mark = specialNeculesCase
                 result = int(mark) * int(materie_value)
                 pre_medie_lines.append(f'{result}')
                 found = True
@@ -162,24 +186,34 @@ def submit():
 
     sum = 0
     for line in lines:
-        sum += int(line.strip())
+        mark = line.strip()
+        sum += int(mark)
 
     medie = sum / credits_per_semester
 
-    medie_label = tk.Label(window, text=f'Media este {medie}')
+    medie_label = tk.Label(window, text=f'Media este {medie:.2f}')
     medie_label.pack()
-    print("Media este: ", medie)
 
 
+    with open("marks.txt", "r") as marks_file:
+        lines = marks_file.readlines()
 
+    courses = {}
+    for line in lines:
+        words = line.strip().split(",")
+        course_name = words[0].strip()
+        mark = words[1].strip()
+        if mark == necules:
+            mark = "Necules"
+        courses[course_name] = mark
+
+    create_table(courses)
 
 submit_button = tk.Button(window, text="Submit", command=submit)
 submit_button.pack()
 
 #make author label and align it to bottom
-author_label = tk.Label(window, text="Made by: Tudor Florea")
+author_label = tk.Label(window, text="Made by: Serviciul IT")
 author_label.pack(side=BOTTOM)
-
-
 
 window.mainloop()

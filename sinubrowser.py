@@ -34,8 +34,8 @@ def launch_selenium(username, password, faculty, specialty):
 
     marks_file = open("marks.txt", "w")
 
-    rows = driver.find_elements(By.XPATH, '//table[@class="table"]/tbody/tr[td[contains(text(), "Nota")]]')
-
+    rows = driver.find_elements(By.XPATH, '//table[@class="table"]/tbody/tr[td[contains(text(), "Nota") or contains(text(), "Admis/Respins")]]')
+    
     for row in rows:
         marks_file.write(row.text + "\n")
 
