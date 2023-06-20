@@ -1,4 +1,11 @@
 UTCN Medie Calculator
+//
+
+v0.2.1 change log:
+
+-am adaugat specialitatea calculatoare anu 1
+
+-am adaugat optiune pentru admis (sport)
 
 //
 

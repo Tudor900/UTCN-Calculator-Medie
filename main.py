@@ -92,7 +92,6 @@ def submit():
 
     sinubrowser.launch_selenium(username, password, faculty, specialty)
 
-
     with open("marks.txt", "r") as file:
         lines = file.readlines()
 
@@ -101,12 +100,14 @@ def submit():
     for line in lines:
         words = line.split()
         course_name = ' '.join(words[2:-3])
-        last_character = line[-2]  # Assuming the last character is always before the newline character
+        last_part = words[-1]
 
-        if last_character == 's':
-            last_character = '5'
+        if last_part == "Admis":
+            last_part = '10'
+        elif last_part == "Necules":
+            last_part = '5'
 
-        formatted_line = f'{course_name},{last_character}\n'
+        formatted_line = f'{course_name},{last_part}\n'
         formatted_lines.append(formatted_line)
 
     with open("marks.txt", "w") as file:
