@@ -1,6 +1,12 @@
 UTCN Medie Calculator
 //
 
+v0.3 change log:
+
+-am adugat tree pentru vizualizarea materiilor
+
+//
+
 v0.2.1 change log:
 
 -am adaugat specialitatea calculatoare anu 1

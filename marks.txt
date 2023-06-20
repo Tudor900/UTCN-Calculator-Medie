@@ -1,7 +1,7 @@
-Analiza matematica II (Calcul integral si ecuatii diferentiale),11
-Electrotehnica,11
-Limba engleza II,10
-Programare in limbaj de asamblare,11
-Proiectarea sistemelor numerice,9
-Sport I,11
-Structuri de date si algoritmi,7
+Bazele electrotehnicii I,11
+Dispozitive electronice,4
+Ecuatii diferentiale,4
+Fizica II,11
+Limba franceza 1,9
+Matematici speciale,8
+Programarea calculatoarelor si limbaje de programare II,5
