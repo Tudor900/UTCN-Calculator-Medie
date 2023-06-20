@@ -2,6 +2,13 @@ UTCN Medie Calculator
 
 //
 
+v0.2 change log:
+
+-am schimbat interfata si sistemu ca sa poti alege facultatea si specialitatea pentru creditele specifice materiilor din specialitate
+
+
+//
+
 v0.1.3 change log:
 
 -am aduagat celelate facultati
@@ -26,12 +33,3 @@ v0.1.1 change log:
 
 
 //
-
-
-TO DO:
-
--mutare mesaje din consola in window
-
--adaugare alte facultati
-
--adaugare rest de materii

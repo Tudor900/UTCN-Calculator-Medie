@@ -1,7 +1,7 @@
-Bazele electrotehnicii I,necules
+Bazele electrotehnicii I,5
 Dispozitive electronice,4
 Ecuatii diferentiale,4
-Fizica II,necules
+Fizica II,5
 Limba franceza 1,9
 Matematici speciale,8
 Programarea calculatoarelor si limbaje de programare II,5
